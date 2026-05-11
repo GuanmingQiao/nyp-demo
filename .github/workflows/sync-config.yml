@@ -1,0 +1,53 @@
+name: Sync Config
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'config/app-config.json'
+
+permissions:
+  id-token: write
+  contents: read
+
+env:
+  AWS_REGION: ap-southeast-1
+  SSM_PREFIX: /nyp-demo
+
+jobs:
+  sync:
+    name: Sync config to SSM
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::459471000310:role/nyp-demo-github-actions-role
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Push config keys to SSM Parameter Store
+        run: |
+          CONFIG=$(cat config/app-config.json)
+
+          push_param() {
+            local KEY="$1"
+            local VALUE="$2"
+            if [ -z "$VALUE" ]; then
+              echo "Skipping empty value for $KEY"
+              return
+            fi
+            aws ssm put-parameter \
+              --name "${{ env.SSM_PREFIX }}/$KEY" \
+              --value "$VALUE" \
+              --type String \
+              --overwrite
+            echo "Updated $KEY"
+          }
+
+          push_param "announcement"  "$(echo "$CONFIG" | jq -r '.announcement')"
+          push_param "currentWeek"   "$(echo "$CONFIG" | jq -r '.currentWeek | tostring')"
+          push_param "semester"      "$(echo "$CONFIG" | jq -r '.semester')"
+          push_param "environment"   "$(echo "$CONFIG" | jq -r '.environment')"
