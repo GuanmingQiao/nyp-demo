@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IT3226 Cloud Computing — Nanyang Polytechnic</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="nav-brand">
+        <span class="nav-logo">NYP</span>
+        <span class="nav-title">School of Information Technology</span>
+      </div>
+      <div class="nav-links">
+        <a href="#overview">Overview</a>
+        <a href="#assessment">Assessment</a>
+        <a href="#schedule">Schedule</a>
+        <a href="#labs">Labs</a>
+        <a href="#policies">Policies</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="banner" id="banner" hidden>
+    <span class="banner-icon">📢</span>
+    <span id="banner-text"></span>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="container">
+      <p class="page-label">Course Syllabus</p>
+      <h1 class="course-title">IT3226: Cloud Computing</h1>
+      <p class="course-tagline">Design, deployment and management of cloud-based applications and infrastructure on Amazon Web Services.</p>
+      <p class="course-meta">4 Academic Units &nbsp;·&nbsp; <em>Prerequisites:</em> IT2301 Networking Fundamentals or IT2305 Systems Administration</p>
+    </div>
+  </div>
+
+  <!-- INFO TABLE -->
+  <div class="info-strip">
+    <div class="container">
+      <div class="info-table">
+        <div class="info-col">
+          <h3 class="info-col-title">Instructor</h3>
+          <p><strong>Mr. Guanming Qiao</strong></p>
+          <p>guanmingqiao@nyp.edu.sg</p>
+          <p>Office Hours: Wed 2:00–4:00 pm, Room L4-05</p>
+          <p style="margin-top:10px"><strong>Teaching Assistant</strong></p>
+          <p>To be assigned — see course portal for details</p>
+        </div>
+        <div class="info-col">
+          <h3 class="info-col-title">Student Resources</h3>
+          <ul class="info-links">
+            <li><a href="#">NYP Student Portal</a></li>
+            <li><a href="#">Course Discussion Forum</a></li>
+            <li><a href="#">AWS Academy Learner Lab</a></li>
+            <li><a href="#">IT Helpdesk (Block L, Level 1)</a></li>
+            <li><a href="#">Student Services Centre</a></li>
+          </ul>
+        </div>
+        <div class="info-col">
+          <h3 class="info-col-title">Course Schedule</h3>
+          <p><strong>Lectures:</strong> Tue & Thu, 9:00–11:00 am</p>
+          <p><strong>Venue:</strong> IT Lab 3, Block L</p>
+          <p style="margin-top:8px"><strong>Semester:</strong> <span id="semester">Semester 1, AY2025/26</span></p>
+          <p style="margin-top:8px"><span class="env-badge" id="env-badge"></span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SYLLABUS DETAILS -->
+  <div class="syllabus-body">
+    <div class="container container-narrow">
+
+      <div class="syllabus-divider">SYLLABUS DETAILS</div>
+
+      <!-- WELCOME -->
+      <section class="syllabus-section" id="overview">
+        <p>Welcome to IT3226! I am Guanming Qiao, a lecturer in the School of Information Technology at NYP. My background is in cloud infrastructure and DevOps, and I have had the privilege of designing and operating large-scale cloud systems in industry before joining NYP. I am looking forward to sharing real-world perspectives alongside the theory this semester.</p>
+        <p>This course is <em>hands-on first</em>. Every week builds toward something you can deploy and show. You will finish the semester with a working cloud application, a CI/CD pipeline, and the vocabulary to discuss cloud architecture with any engineering team.</p>
+
+        <h2 class="section-heading">Course Overview</h2>
+        <p>IT3226 introduces students to cloud computing on Amazon Web Services — the world's leading cloud platform. The course covers the full lifecycle of a cloud application: provisioning compute and storage, securing access with IAM, persisting data in managed databases, building serverless and containerised services, automating deployments with CI/CD pipelines, and observing systems in production.</p>
+        <p>The course is structured around two reinforcing tracks: <em>weekly lectures</em> that introduce concepts and AWS services, and <em>hands-on labs</em> that require you to apply those concepts in a live AWS environment. A group capstone project in Week 12 ties everything together into a single deployed, monitored, production-ready application.</p>
+        <p>Plan to spend at least <strong>6 hours per week</strong> in addition to contact hours, and spread your work across the week — the labs build on each other and last-minute preparation rarely leads to deep understanding.</p>
+
+        <h2 class="section-heading">Course-Level Learning Objectives</h2>
+        <p>Upon successful completion of this course, students will be able to:</p>
+        <ol class="objective-list">
+          <li>Explain the core AWS service categories (compute, storage, database, networking, security) and select appropriate services for a given workload.</li>
+          <li>Design and deploy multi-tier cloud architectures that are secure, reliable, and cost-efficient.</li>
+          <li>Apply the principle of least privilege using IAM to control access across AWS services.</li>
+          <li>Build and operate automated CI/CD pipelines that deploy application changes without manual intervention.</li>
+          <li>Implement Infrastructure as Code using Terraform to provision and manage cloud resources reproducibly.</li>
+          <li>Monitor deployed systems using CloudWatch metrics, alarms, and logs, and respond appropriately to operational events.</li>
+          <li>Collaborate effectively in a team to architect, build, and present a cloud-native application within a deadline.</li>
+        </ol>
+      </section>
+
+      <!-- ASSESSMENT -->
+      <section class="syllabus-section" id="assessment">
+        <h2 class="section-heading">Assessment</h2>
+        <p>The course is assessed through three complementary components. There is no final written examination — assessment is continuous and practical.</p>
+
+        <table class="assessment-table">
+          <thead>
+            <tr><th>Component</th><th>Weight</th><th>Details</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Lab Assignments (×5)</strong></td>
+              <td>40%</td>
+              <td>One lab per fortnight, submitted individually. Graded on completion and correctness. Each lab is worth 8%.</td>
+            </tr>
+            <tr>
+              <td><strong>In-class Quizzes (×4)</strong></td>
+              <td>20%</td>
+              <td>Short quizzes held during lecture, covering the preceding two weeks. Lowest quiz score is dropped; best 3 of 4 count (5% each).</td>
+            </tr>
+            <tr>
+              <td><strong>Group Capstone Project</strong></td>
+              <td>40%</td>
+              <td>Groups of 3–4. Deliverables: architecture diagram (5%), working deployment (20%), presentation (10%), individual reflection (5%).</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>All deadlines are firm. Labs submitted after the deadline will not be accepted. This policy exists to allow solutions to be discussed openly in the following class without disadvantaging students who have not yet submitted.</p>
+        <p>The capstone project is a group assessment. All team members receive the same grade by default. If there are concerns about unequal contribution, contact the instructor <strong>at least 10 days</strong> before the submission deadline — we cannot act on concerns raised after marking has begun.</p>
+      </section>
+
+      <!-- SCHEDULE -->
+      <section class="syllabus-section" id="schedule">
+        <h2 class="section-heading">Course Schedule</h2>
+        <p>The schedule below is subject to revision during the semester. Any changes will be announced on the course portal. Click a week to see full learning objectives, topics, and reading materials.</p>
+
+        <table class="schedule-table" id="schedule-table"></table>
+      </section>
+
+      <!-- LABS -->
+      <section class="syllabus-section" id="labs">
+        <h2 class="section-heading">Lab Schedule</h2>
+        <p>Labs are conducted in IT Lab 3 during the Thursday session of the indicated week. Handouts are distributed via the course portal and hosted on Amazon S3. Click a lab for full instructions, prerequisites, and step-by-step guidance.</p>
+
+        <div class="lab-list" id="lab-list"></div>
+      </section>
+
+      <!-- POLICIES -->
+      <section class="syllabus-section" id="policies">
+        <h2 class="section-heading">Policies</h2>
+
+        <h3 class="sub-heading">Attendance</h3>
+        <p>Lectures are the primary venue for new content and in-class exercises. You are expected to attend in person. If you must miss a session, obtain notes from a classmate and review materials posted on the course portal. Attendance is recorded and may be taken into account for borderline grades at the instructor's discretion.</p>
+
+        <h3 class="sub-heading">Academic Integrity</h3>
+        <p>Lab assignments must be completed individually. Discussion of concepts with classmates is encouraged; sharing solutions or code is not. If you draw on external sources, cite them. Using another student's work — in whole or in part — constitutes academic misconduct and will be referred to the School disciplinary process.</p>
+        <p>For the capstone project, all code must be written by the group. If you incorporate open-source libraries or snippets, document them in your submission's README.</p>
+
+        <h3 class="sub-heading">Generative AI</h3>
+        <p>Use of AI code-generation tools (ChatGPT, GitHub Copilot, etc.) is permitted on lab assignments provided you clearly understand and can explain every line of submitted work. The lab assessor may ask you to walk through your code during class. If you cannot explain it, you did not write it — and will receive no marks for it.</p>
+        <p>For quizzes and the capstone presentation, all responses and explanations must be your own.</p>
+
+        <h3 class="sub-heading">AWS Account Usage</h3>
+        <p>Labs are conducted using an AWS Academy Learner Lab account provided by NYP. Do not provision resources outside of the lab instructions — AWS charges are real. Any costs incurred through negligence or unauthorised use are the responsibility of the student. Always terminate resources at the end of each lab session.</p>
+
+        <h3 class="sub-heading">Getting Help</h3>
+        <p>Post conceptual questions on the course discussion forum where the whole class benefits from the answer. For personal matters, email the instructor directly. Office hours are the best time for extended help on labs or project design — come with specific questions, not just "I'm stuck."</p>
+      </section>
+
+      <!-- INSTRUCTOR -->
+      <section class="syllabus-section" id="instructor">
+        <h2 class="section-heading">About the Instructor</h2>
+        <div class="instructor-card">
+          <div class="instructor-avatar">GQ</div>
+          <div class="instructor-info">
+            <h3>Mr. Guanming Qiao</h3>
+            <p class="instructor-title">Lecturer, School of Information Technology</p>
+            <p class="instructor-bio">Specialising in cloud infrastructure, DevOps practices, and distributed systems. Research interests include infrastructure-as-code, automated deployment pipelines, and cloud-native architecture patterns. Prior to joining NYP, worked in industry designing and operating large-scale AWS environments for financial services clients.</p>
+            <p class="instructor-bio" style="margin-top:8px">Contact: <a href="mailto:guanmingqiao@nyp.edu.sg">guanmingqiao@nyp.edu.sg</a> &nbsp;·&nbsp; Office: Room L4-05, Block L</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>© 2025 Nanyang Polytechnic · School of Information Technology · IT3226 Cloud Computing</span>
+      <span class="deploy-info" id="deploy-info"></span>
+    </div>
+  </footer>
+
+  <script src="/js/data.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>

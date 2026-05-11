@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Module — IT3226 Cloud Computing</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="nav-brand">
+        <span class="nav-logo">NYP</span>
+        <span class="nav-title">School of Information Technology</span>
+      </div>
+      <div class="nav-links">
+        <a href="/">← Syllabus</a>
+        <a href="#objectives">Objectives</a>
+        <a href="#topics">Topics</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="banner" id="banner" hidden>
+    <span class="banner-icon">📢</span>
+    <span id="banner-text"></span>
+  </div>
+
+  <!-- MODULE HERO -->
+  <div class="module-hero" id="module-hero">
+    <div class="container">
+      <div class="breadcrumb"><a href="/">IT3226 Cloud Computing</a> <span>›</span> <span id="breadcrumb-label"></span></div>
+      <div class="module-hero-meta">
+        <span class="week-pill" id="week-pill"></span>
+        <span class="study-hours" id="study-hours"></span>
+      </div>
+      <h1 id="module-title"></h1>
+      <p class="module-overview" id="module-overview"></p>
+    </div>
+  </div>
+
+  <!-- MODULE BODY -->
+  <div class="detail-body">
+    <div class="container container-narrow">
+
+      <!-- LEARNING OBJECTIVES -->
+      <section class="detail-section" id="objectives">
+        <h2 class="section-heading">Learning Objectives</h2>
+        <p>By the end of this week, you will be able to:</p>
+        <ol class="objective-list" id="objective-list"></ol>
+      </section>
+
+      <!-- TOPICS -->
+      <section class="detail-section" id="topics">
+        <h2 class="section-heading">Topics Covered</h2>
+        <div class="topic-grid" id="topic-grid"></div>
+      </section>
+
+      <!-- WEEK NAV -->
+      <div class="week-nav" id="week-nav"></div>
+
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>© 2025 Nanyang Polytechnic · IT3226 Cloud Computing</span>
+      <span><a href="/" style="color:rgba(255,255,255,0.5)">← Back to Syllabus</a></span>
+    </div>
+  </footer>
+
+  <script src="/js/data.js"></script>
+  <script src="/js/module.js"></script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lab — IT3226 Cloud Computing</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="nav-brand">
+        <span class="nav-logo">NYP</span>
+        <span class="nav-title">School of Information Technology</span>
+      </div>
+      <div class="nav-links">
+        <a href="/">← Syllabus</a>
+        <a href="#steps">Steps</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="banner" id="banner" hidden>
+    <span class="banner-icon">📢</span>
+    <span id="banner-text"></span>
+  </div>
+
+  <!-- LAB HERO -->
+  <div class="lab-hero" id="lab-hero">
+    <div class="container">
+      <div class="breadcrumb"><a href="/">IT3226 Cloud Computing</a> <span>›</span> <span id="breadcrumb-label"></span></div>
+      <div class="lab-hero-meta">
+        <span class="lab-num-pill" id="lab-num-pill"></span>
+        <span class="difficulty-badge" id="difficulty-badge"></span>
+        <span class="duration-badge" id="duration-badge"></span>
+      </div>
+      <h1 id="lab-title"></h1>
+      <p class="module-overview" id="lab-overview"></p>
+
+      <div class="lab-services" id="lab-services"></div>
+    </div>
+  </div>
+
+  <!-- LAB BODY -->
+  <div class="detail-body">
+    <div class="container container-narrow">
+
+      <!-- PREREQUISITES -->
+      <section class="detail-section">
+        <h2 class="section-heading">Prerequisites</h2>
+        <p id="prereq-text"></p>
+      </section>
+
+      <!-- STEPS -->
+      <section class="detail-section" id="steps">
+        <h2 class="section-heading">Lab Steps</h2>
+        <p>Work through each step in order. Each step builds on the previous one.</p>
+        <div class="step-list" id="step-list"></div>
+      </section>
+
+      <!-- DOWNLOAD -->
+      <section class="detail-section">
+        <h2 class="section-heading">Lab Handout</h2>
+        <p>The full lab handout (with screenshots and detailed instructions) is available for download from the course S3 bucket. You will need to be logged into the course portal to access this link.</p>
+        <a class="download-btn" href="#" id="download-btn">Download Lab Handout (PDF)</a>
+      </section>
+
+      <!-- LAB NAV -->
+      <div class="week-nav" id="lab-nav"></div>
+
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>© 2025 Nanyang Polytechnic · IT3226 Cloud Computing</span>
+      <span><a href="/" style="color:rgba(255,255,255,0.5)">← Back to Syllabus</a></span>
+    </div>
+  </footer>
+
+  <script src="/js/data.js"></script>
+  <script src="/js/lab.js"></script>
+</body>
+</html>
