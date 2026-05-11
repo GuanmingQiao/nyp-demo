@@ -45,7 +45,9 @@ function render(lab) {
       <div class="step-chevron">⌄</div>
     </div>`).join('');
 
-  document.getElementById('download-btn').textContent = `Download Lab ${lab.id} Handout (PDF)`;
+  const dlBtn = document.getElementById('download-btn');
+  dlBtn.textContent = `Download Lab ${lab.id} Handout (PDF)`;
+  dlBtn.href = `/api/labs/${lab.id}/handout`;
 
   const prev = LABS.find(l => l.id === lab.id - 1);
   const next = LABS.find(l => l.id === lab.id + 1);

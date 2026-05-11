@@ -43,6 +43,28 @@ app.get('/api/config', async (req, res) => {
   res.json(config);
 });
 
+const S3_BUCKET   = process.env.S3_BUCKET || 'nyp-demo-labs-459471000310';
+const S3_REGION   = process.env.AWS_REGION || 'ap-southeast-1';
+
+app.get('/api/labs/:id/handout', async (req, res) => {
+  try {
+    const { S3Client, GetObjectCommand } = require('@aws-sdk/client-s3');
+    const { getSignedUrl } = require('@aws-sdk/s3-request-presigner');
+    const client  = new S3Client({ region: S3_REGION });
+    const key     = `labs/lab-${req.params.id}.pdf`;
+    const command = new GetObjectCommand({
+      Bucket: S3_BUCKET,
+      Key: key,
+      ResponseContentDisposition: `attachment; filename="lab-${req.params.id}.pdf"`,
+    });
+    const url = await getSignedUrl(client, command, { expiresIn: 300 });
+    res.redirect(url);
+  } catch (err) {
+    console.error('S3 presign failed:', err.message);
+    res.status(404).json({ error: 'Handout not available' });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Running in ${IS_PROD ? 'production (SSM)' : 'local (config file)'} mode`);
   console.log(`http://localhost:${PORT}`);
