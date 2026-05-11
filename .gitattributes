@@ -1,0 +1,2 @@
+# Prevent line-ending conversion on binary assets
+infra/assets/*.pdf binary
