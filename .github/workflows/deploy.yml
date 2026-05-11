@@ -7,6 +7,7 @@ on:
       - 'config/**'
       - 'infra/**'
       - '**.md'
+  workflow_dispatch:
 
 permissions:
   id-token: write
