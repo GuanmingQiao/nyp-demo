@@ -7,7 +7,7 @@ APP_DIR="/var/www/nyp-demo"
 
 # ── System ────────────────────────────────────────────────────────
 dnf update -y
-dnf install -y git nginx
+dnf install -y git nginx amazon-ssm-agent
 
 # ── Node.js 20 via NodeSource ─────────────────────────────────────
 curl -fsSL https://rpm.nodesource.com/setup_20.x | bash -
