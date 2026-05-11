@@ -8,19 +8,33 @@ const IS_PROD = process.env.NODE_ENV === 'production';
 
 app.use(express.static(path.join(__dirname, '../src')));
 
+const CONFIG_DEFAULTS = {
+  announcement: '',
+  currentWeek: '1',
+  semester: '',
+  environment: 'production',
+  deployedAt: '',
+  commitSha: '',
+};
+
 app.get('/api/config', async (req, res) => {
   if (IS_PROD) {
-    const { SSMClient, GetParametersByPathCommand } = require('@aws-sdk/client-ssm');
-    const client = new SSMClient({ region: process.env.AWS_REGION || 'ap-southeast-1' });
-    const prefix = process.env.SSM_PREFIX || '/nyp-demo';
+    try {
+      const { SSMClient, GetParametersByPathCommand } = require('@aws-sdk/client-ssm');
+      const client = new SSMClient({ region: process.env.AWS_REGION || 'ap-southeast-1' });
+      const prefix = process.env.SSM_PREFIX || '/nyp-demo';
 
-    const result = await client.send(new GetParametersByPathCommand({ Path: prefix, Recursive: false }));
-    const config = {};
-    for (const param of result.Parameters) {
-      const key = param.Name.replace(`${prefix}/`, '');
-      config[key] = param.Value;
+      const result = await client.send(new GetParametersByPathCommand({ Path: prefix, Recursive: false }));
+      const config = { ...CONFIG_DEFAULTS };
+      for (const param of result.Parameters) {
+        const key = param.Name.replace(`${prefix}/`, '');
+        config[key] = param.Value;
+      }
+      return res.json(config);
+    } catch (err) {
+      console.error('SSM fetch failed:', err.message);
+      return res.json({ ...CONFIG_DEFAULTS, _error: err.message });
     }
-    return res.json(config);
   }
 
   // Local dev: read from config/app-config.json
