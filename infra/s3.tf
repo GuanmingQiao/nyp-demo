@@ -27,3 +27,24 @@ resource "aws_s3_bucket_public_access_block" "labs" {
   ignore_public_acls      = true
   restrict_public_buckets = true
 }
+
+# ── Lab handout PDFs ─────────────────────────────────────────────────────────
+# Source files live in infra/assets/. To add or update a handout:
+#   1. Drop/replace the PDF in infra/assets/
+#   2. Run `terraform apply` — etag detects changes and re-uploads only what changed
+
+locals {
+  lab_ids = toset(["1", "2", "3", "4", "5"])
+}
+
+resource "aws_s3_object" "lab_handout" {
+  for_each = local.lab_ids
+
+  bucket       = aws_s3_bucket.labs.id
+  key          = "labs/lab-${each.key}.pdf"
+  source       = "${path.module}/assets/lab-${each.key}.pdf"
+  content_type = "application/pdf"
+  etag         = filemd5("${path.module}/assets/lab-${each.key}.pdf")
+
+  tags = local.tags
+}
