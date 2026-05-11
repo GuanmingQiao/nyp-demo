@@ -37,7 +37,10 @@ resource "aws_iam_role_policy" "ec2_custom" {
           "ssm:GetParametersByPath",
           "ssm:GetParameter",
         ]
-        Resource = "arn:aws:ssm:${var.aws_region}:${data.aws_caller_identity.current.account_id}:parameter/${var.project}/*"
+        Resource = [
+          "arn:aws:ssm:${var.aws_region}:${data.aws_caller_identity.current.account_id}:parameter/${var.project}",
+          "arn:aws:ssm:${var.aws_region}:${data.aws_caller_identity.current.account_id}:parameter/${var.project}/*",
+        ]
       },
       {
         Sid    = "ReadLabAssets"
@@ -115,11 +118,17 @@ resource "aws_iam_role_policy" "github_actions" {
     Version = "2012-10-17"
     Statement = [
       {
+        Sid    = "EC2Describe"
+        Effect = "Allow"
+        Action = ["ec2:DescribeInstances"]
+        Resource = "*"
+      },
+      {
         Sid    = "SSMRunCommand"
         Effect = "Allow"
         Action = ["ssm:SendCommand"]
         Resource = [
-          aws_instance.web.arn,
+          "arn:aws:ec2:${var.aws_region}:${data.aws_caller_identity.current.account_id}:instance/*",
           "arn:aws:ssm:${var.aws_region}::document/AWS-RunShellScript",
         ]
       },

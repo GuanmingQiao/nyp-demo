@@ -73,3 +73,9 @@ rm -f /etc/nginx/conf.d/default.conf
 systemctl daemon-reload
 systemctl enable --now nyp-demo
 systemctl enable --now nginx
+
+# ── SSM agent ─────────────────────────────────────────────────────
+# AL2023 ships with the agent pre-installed; restart after user_data
+# finishes so the IAM role is fully in effect before first registration.
+systemctl enable amazon-ssm-agent
+systemctl restart amazon-ssm-agent
