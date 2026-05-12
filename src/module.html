@@ -10,12 +10,13 @@
 
   <nav class="nav">
     <div class="nav-inner">
-      <div class="nav-brand">
+      <a class="nav-brand" href="/">
         <span class="nav-logo">NYP</span>
         <span class="nav-title">School of Information Technology</span>
-      </div>
+      </a>
       <div class="nav-links">
         <a href="/">← Syllabus</a>
+        <a href="#slides" id="nav-slides-link" hidden>Slides</a>
         <a href="#objectives">Objectives</a>
         <a href="#topics">Topics</a>
       </div>
@@ -43,6 +44,17 @@
   <!-- MODULE BODY -->
   <div class="detail-body">
     <div class="container container-narrow">
+
+      <!-- LECTURE SLIDES (shown only when module has an embedUrl) -->
+      <section class="detail-section" id="slides" hidden>
+        <h2 class="section-heading">Lecture Slides</h2>
+        <div class="slides-container">
+          <iframe id="slides-iframe" class="slides-embed" allowfullscreen></iframe>
+        </div>
+        <p class="slides-caption">
+          <a id="slides-external-link" href="#" target="_blank" rel="noopener">Open slides in full screen ↗</a>
+        </p>
+      </section>
 
       <!-- LEARNING OBJECTIVES -->
       <section class="detail-section" id="objectives">

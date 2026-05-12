@@ -37,6 +37,7 @@ const MODULES = [
       { name: 'AWS Free Tier', detail: 'What is included and how to avoid surprise bills' },
     ],
     studyHours: 4,
+    embedUrl: 'https://gamma.app/embed/0ml32elyymeade8',
   },
   {
     week: 2,

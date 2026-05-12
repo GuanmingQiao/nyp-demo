@@ -36,6 +36,17 @@ function render(mod, currentWeek) {
       <div class="topic-detail">${t.detail}</div>
     </div>`).join('');
 
+  if (mod.embedUrl) {
+    const section = document.getElementById('slides');
+    const iframe  = document.getElementById('slides-iframe');
+    const extLink = document.getElementById('slides-external-link');
+    const navLink = document.getElementById('nav-slides-link');
+    iframe.src = mod.embedUrl;
+    extLink.href = mod.embedUrl;
+    section.removeAttribute('hidden');
+    navLink.removeAttribute('hidden');
+  }
+
   const prev = MODULES.find(m => m.week === mod.week - 1);
   const next = MODULES.find(m => m.week === mod.week + 1);
   const nav  = document.getElementById('week-nav');
